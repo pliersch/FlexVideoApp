@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:s="library://ns.adobe.com/flex/spark"
+				xmlns:fx="http://ns.adobe.com/mxml/2009"
+				xmlns:d="http://ns.adobe.com/fxg/2008/dt"
+				width="470" height="107" autoDrawBackground="false" 
+				xmlns:itemRenderer="de.liersch.view.itemRenderer.*">
+	
+	<s:Rect left="0" right="0" top="0" bottom="0">
+		<s:fill>
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry alpha="1" color="#555555" ratio="0"/>
+				<s:GradientEntry alpha="1" color="#000000" ratio="0.4"/>
+			</s:LinearGradient>
+		</s:fill>
+	</s:Rect>
+	
+	<s:Label x="170" y="6"  fontFamily="Arial" 
+				text="{data.title}"
+				width="81" color="#FFFFFF" fontSize="21"/>
+	<s:Label y="32" left="170" right="10" height="49" color="#FFFFFF" fontFamily="Arial"
+				fontSize="10" text="{data.description}"/>
+	<s:Label x="161" y="87" height="11" fontFamily="Arial" fontSize="9"
+				text="Bewertung {data.rating}" 
+				color="#FFFFFF"/>
+	<s:Label x="243" y="87" height="11" fontFamily="Arial" fontSize="9"
+				text="Aufrufe: {data.views}" 
+				color="#FFFFFF"/>
+	<s:Label x="334" y="87" height="11" fontFamily="Arial" fontSize="9"
+				text="Besitzer {data.ownerNickName}" 
+				color="#FFFFFF"/>
+	<s:Rect left="3" top="3" bottom="3" width="150" >
+		<s:fill>
+			<s:SolidColor color="0x000000"/>
+		</s:fill>
+	</s:Rect>
+	<s:Image left="4" top="4" bottom="4" width="150" smooth="true"
+				   source="{data.previewBitmapData}" />
+	<s:Rect left="3" top="3" bottom="3" width="150" >
+		<s:stroke>
+			<s:SolidColorStroke caps="none" color="#333333" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke>
+	</s:Rect>
+	<s:Label id="btnAddFavorite" x="408" y="10" color="#FFFFFF" text="+ Favorit"
+			 click="{dispatchEvent(new Event('addFavorite', true))}" mouseChildren="false"/>
+	<s:Label id="btnRemoveFavorite" x="408" y="10" color="#FFFFFF" text="- Favorit" 
+			 click="{dispatchEvent(new Event('removeFavorite', true))}" mouseChildren="false"/>
+</s:ItemRenderer>

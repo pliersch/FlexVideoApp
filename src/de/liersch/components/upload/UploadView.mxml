@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%">
+
+	<!--Background Color-->
+	<s:Rect left="0" right="0" top="0" bottom="0" alpha="1">
+		<s:fill>
+			<s:SolidColor color="#000000" alpha="0.5"/>
+		</s:fill>
+	</s:Rect>
+	
+	<!--Image Preview-->
+	
+	<!--Image Border-->
+	<s:Group width="520" height="220" horizontalCenter="0" verticalCenter="0">
+		
+		<s:Rect left="0" right="0" top="0" bottom="0">
+			<s:fill>
+				<s:SolidColor color="#000000" alpha="1"/>
+			</s:fill>
+		</s:Rect>
+		<s:Rect left="0" right="0" top="0" bottom="0" >
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="#333333" joints="miter" miterLimit="4" weight="1"/>
+			</s:stroke>
+		</s:Rect>
+		<s:Label id="errorMessage" y="14" color="#FF0000" fontSize="16" fontWeight="bold"
+				 horizontalCenter="0" text="Upload fehlgeschlagen" visible="false"/>
+		<s:Label x="290" y="21" color="#FFFFFF" text="Titel" textAlign="right"/>
+		<s:Label x="289" y="81" color="#FFFFFF" text="Beschreibung" textAlign="right"/>
+		<s:Button id="buttonCancel" y="177" label="Abbrechen" horizontalCenter="70"/>
+		<s:Button id="buttonUpload" y="177" label="Upload" horizontalCenter="203"/>
+		<s:TextInput id="txtTitle" right="20" top="37" width="210"/>
+		<s:TextArea id="txtDescription" y="100" right="20" width="210" height="65"/>
+		<s:Image id="imagePreview" left="10" top="30" width="220" height="150"/>
+		<s:Rect left="10" top="30" width="220" height="150">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" joints="miter" miterLimit="4" weight="1" color="333333" />
+			</s:stroke>
+		</s:Rect>
+	</s:Group>
+	
+</s:Group>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fx="http://ns.adobe.com/mxml/2009">
+	<fx:Metadata>[HostComponent("spark.components.Button")]</fx:Metadata>
+	<fx:Script>
+		<![CDATA[
+			import de.liersch.preference.Colors;
+		]]>
+	</fx:Script>
+	<s:states>
+		<s:State name="up"/>
+		<s:State name="over"/>
+		<s:State name="down"/>
+		<s:State name="disabled"/>
+	</s:states>
+	<s:Path data="M 2.23 8.805 L 5.812 5.162 L 7.643 6.993 L 8.73 0 L 1.75 1.1 L 3.582 2.932 L 0 6.515" winding="nonZero" x="2.135" y="11.52">
+		<s:fill>
+			<s:SolidColor color="#9BAC99"/>
+		</s:fill>
+	</s:Path>
+	
+	<s:Path data="M 6.28 0 L 2.919 3.327 L 1.087 1.495 L 0 8.489 L 6.98 7.389 L 5.148 5.557 L 8.641 2.064" winding="nonZero" x="11.427" y="2.496">
+		<s:fill>
+			<s:SolidColor color="#9BAC99"/>
+		</s:fill>
+	</s:Path>
+	<s:Rect height="22" width="22" includeIn="disabled,up" >
+		<s:stroke>
+			<s:SolidColorStroke caps="none" color="#9BAC99" joints="miter" miterLimit="10"/>
+		</s:stroke>
+		<s:fill>
+			<s:SolidColor color="{Colors.ORANGE}" alpha="0"/>
+		</s:fill>
+	</s:Rect>
+	
+	<s:Rect height="22" width="22" includeIn="over,down" >
+		<s:stroke>
+			<s:SolidColorStroke caps="none" color="{Colors.ORANGE}" joints="miter" miterLimit="10"/>
+		</s:stroke>
+		<s:fill>
+			<s:SolidColor color="{Colors.ORANGE}" alpha="0"/>
+		</s:fill>
+	</s:Rect>
+</s:Skin>

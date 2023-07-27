@@ -1,0 +1,35 @@
+@namespace s "library://ns.adobe.com/flex/spark";
+
+s|Button 
+{
+	color:#000000;
+	cornerRadius:5;
+}
+
+s|Button.menu
+{
+	skinClass: ClassReference("de.liersch.skin.button.MenuButton");
+}
+
+s|Button.menuRoundCorner
+{
+	skinClass: ClassReference("de.liersch.skin.button.MenuButtonRoundCorner");
+}
+
+
+s|Button.titleBar_close
+{
+	skinClass: ClassReference("de.liersch.skin.button.CloseButton");
+}
+s|Button.titleBar_maximize
+{
+	skinClass: ClassReference("de.liersch.skin.button.MaximizeButton");
+}
+s|Button.titleBar_minimize
+{
+	skinClass: ClassReference("de.liersch.skin.button.MinimizeButton");
+}
+s|Button.titleBar_fullscreen
+{
+	skinClass: ClassReference("de.liersch.skin.button.FullscreenButton");
+}

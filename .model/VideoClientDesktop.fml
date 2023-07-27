@@ -1,0 +1,388 @@
+
+<model xmlns="http://ns.adobe.com/Fiber/1.0">
+  <annotation name="ActionScriptGeneration">
+    <item name="FullyQualifyReferences">true</item>
+  </annotation>
+  <entity name="EntityManagerFactory">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">EntityManagerFactory</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="RemoteClass">javax.persistence.EntityManagerFactory</item>
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="service Group"/>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">valueObjects</item>
+    </annotation>
+    <property name="open" type="boolean"/>
+  </entity>
+  <service name="VideoService">
+    <annotation name="ActionScriptGeneration">
+      <item name="ServiceType">RemoteObject</item>
+      <item name="Package">services</item>
+      <item name="Endpoint">http://localhost:8080/javaBackend/messagebroker/amf</item>
+      <item name="Destination">videoService</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="DEFAULT_ENTITY_PACKAGE">valueObjects</item>
+      <item name="contextRoot">/javaBackend</item>
+      <item name="rootUrl">http://localhost:8080/javaBackend</item>
+      <item name="LINKED_FILE"></item>
+      <item name="ABSOLUTE_ENDPOINT">http://localhost:8080/javaBackend/messagebroker/amf</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">BlazeDS</item>
+    </annotation>
+    <function name="getUserVideos" return-type="PlayList[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">long</item>
+        <item name="returnType">PlayList</item>
+      </annotation>
+      <parameter name="arg0" type="long"/>
+    </function>
+    <function name="removeFavorite" return-type="Video">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">long,long</item>
+        <item name="returnType">Video</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">id,title,duration,releaseDate,preview,description,views,fileName,rating,comment,lenght,ownerNickName,sumRate</item>
+      </annotation>
+      <parameter name="arg0" type="long"/>
+      <parameter name="arg1" type="long"/>
+    </function>
+    <function name="logout" return-type="boolean">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">long</item>
+        <item name="returnType">boolean</item>
+      </annotation>
+      <parameter name="arg0" type="long"/>
+    </function>
+    <function name="addVideo" return-type="boolean">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">long,Video</item>
+        <item name="returnType">boolean</item>
+      </annotation>
+      <parameter name="arg0" type="long"/>
+      <parameter name="arg1" type="Video"/>
+    </function>
+    <function name="addHistorie" return-type="Video">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">long,long</item>
+        <item name="returnType">Video</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">id,title,duration,releaseDate,preview,description,views,fileName,rating,comment,lenght,ownerNickName,sumRate</item>
+      </annotation>
+      <parameter name="arg0" type="long"/>
+      <parameter name="arg1" type="long"/>
+    </function>
+    <function name="login" return-type="User">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">string,string</item>
+        <item name="returnType">User</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">id,email,nickName,name,isLoggedIn,avatarBytes,givenName,password,playList</item>
+      </annotation>
+      <parameter name="arg0" type="string"/>
+      <parameter name="arg1" type="string"/>
+    </function>
+    <function name="getAllVideos" return-type="Video[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">Video</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">id,title,duration,releaseDate,preview,description,views,fileName,rating,comment,lenght,ownerNickName,sumRate</item>
+      </annotation>
+    </function>
+    <function name="increaseViewCount" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">long</item>
+      </annotation>
+      <parameter name="arg0" type="long"/>
+    </function>
+    <function name="deleteUserByID" return-type="boolean">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">long</item>
+        <item name="returnType">boolean</item>
+      </annotation>
+      <parameter name="arg0" type="long"/>
+    </function>
+    <function name="getComments" return-type="Comment[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">long</item>
+        <item name="returnType">Comment</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">message,id,userID,rate,userName,avatar,date</item>
+      </annotation>
+      <parameter name="arg0" type="long"/>
+    </function>
+    <function name="addUser" return-type="User">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">User</item>
+        <item name="returnType">User</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">id,email,nickName,name,isLoggedIn,avatarBytes,givenName,password,playList</item>
+      </annotation>
+      <parameter name="arg0" type="User"/>
+    </function>
+    <function name="setFavorite" return-type="Video">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">long,long</item>
+        <item name="returnType">Video</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">id,title,duration,releaseDate,preview,description,views,fileName,rating,comment,lenght,ownerNickName,sumRate</item>
+      </annotation>
+      <parameter name="arg0" type="long"/>
+      <parameter name="arg1" type="long"/>
+    </function>
+    <function name="create" return-type="boolean">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">boolean</item>
+      </annotation>
+      <parameter name="arg0" type="opaque"/>
+    </function>
+    <function name="addCommentAndRate" return-type="Video">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">long,long,string,integer</item>
+        <item name="returnType">Video</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">id,title,duration,releaseDate,preview,description,views,fileName,rating,comment,lenght,ownerNickName,sumRate</item>
+      </annotation>
+      <parameter name="arg0" type="long"/>
+      <parameter name="arg1" type="long"/>
+      <parameter name="arg2" type="string"/>
+      <parameter name="arg3" type="integer"/>
+    </function>
+    <function name="removeHistorie" return-type="Video">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">long,long</item>
+        <item name="returnType">Video</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">id,title,duration,releaseDate,preview,description,views,fileName,rating,comment,lenght,ownerNickName,sumRate</item>
+      </annotation>
+      <parameter name="arg0" type="long"/>
+      <parameter name="arg1" type="long"/>
+    </function>
+    <function name="ping" return-type="boolean">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">boolean</item>
+      </annotation>
+    </function>
+    <function name="changeUserData" return-type="User">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">User</item>
+        <item name="returnType">User</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">id,email,nickName,name,isLoggedIn,avatarBytes,givenName,password,playList</item>
+      </annotation>
+      <parameter name="arg0" type="User"/>
+    </function>
+  </service>
+  <entity name="User">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">User</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="RemoteClass">de.liersch.persistence.User</item>
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">VideoService,Dummy</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">valueObjects</item>
+    </annotation>
+    <annotation name="login">
+      <item name="propertySpecifier">id,email,nickName,name,isLoggedIn,avatarBytes,givenName,password,playList</item>
+    </annotation>
+    <annotation name="addUser">
+      <item name="propertySpecifier">id,email,nickName,name,isLoggedIn,avatarBytes,givenName,password,playList</item>
+    </annotation>
+    <annotation name="changeUserData">
+      <item name="propertySpecifier">id,email,nickName,name,isLoggedIn,avatarBytes,givenName,password,playList</item>
+    </annotation>
+    <property name="id" type="long"/>
+    <property name="email" type="string"/>
+    <property name="nickName" type="string"/>
+    <property name="name" type="string"/>
+    <property name="isLoggedIn" type="boolean"/>
+    <property name="avatarBytes" type="blob"/>
+    <property name="givenName" type="string"/>
+    <property name="password" type="string"/>
+    <property name="playList" type="PlayList[]"/>
+  </entity>
+  <entity name="Date">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Date</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="RemoteClass">java.sql.Date</item>
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">VideoService,Dummy</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">valueObjects</item>
+    </annotation>
+    <property name="time" type="long"/>
+    <property name="minutes" type="integer"/>
+    <property name="seconds" type="integer"/>
+    <property name="hours" type="integer"/>
+    <property name="month" type="integer"/>
+    <property name="timezoneOffset" type="integer"/>
+    <property name="year" type="integer"/>
+    <property name="day" type="integer"/>
+    <property name="date" type="integer"/>
+  </entity>
+  <entity name="Comment">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Comment</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="RemoteClass">de.liersch.persistence.Comment</item>
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">VideoService,Dummy</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">valueObjects</item>
+    </annotation>
+    <annotation name="getComments">
+      <item name="propertySpecifier">message,id,userID,rate,userName,avatar,date</item>
+    </annotation>
+    <property name="message" type="string"/>
+    <property name="id" type="long"/>
+    <property name="userID" type="long"/>
+    <property name="rate" type="integer"/>
+    <property name="userName" type="string"/>
+    <property name="avatar" type="blob"/>
+    <property name="date" type="Date"/>
+  </entity>
+  <entity name="PlayList">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">PlayList</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="RemoteClass">de.liersch.persistence.PlayList</item>
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">VideoService</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">valueObjects</item>
+    </annotation>
+    <property name="id" type="long"/>
+    <property name="name" type="string"/>
+    <property name="video" type="Video[]"/>
+  </entity>
+  <entity name="Video">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Video</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="RemoteClass">de.liersch.persistence.Video</item>
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">VideoService,Dummy</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">valueObjects</item>
+    </annotation>
+    <annotation name="removeFavorite">
+      <item name="propertySpecifier">id,title,duration,releaseDate,preview,description,views,fileName,rating,comment,lenght,ownerNickName,sumRate</item>
+    </annotation>
+    <annotation name="addHistorie">
+      <item name="propertySpecifier">id,title,duration,releaseDate,preview,description,views,fileName,rating,comment,lenght,ownerNickName,sumRate</item>
+    </annotation>
+    <annotation name="getAllVideos">
+      <item name="propertySpecifier">id,title,duration,releaseDate,preview,description,views,fileName,rating,comment,lenght,ownerNickName,sumRate</item>
+    </annotation>
+    <annotation name="setFavorite">
+      <item name="propertySpecifier">id,title,duration,releaseDate,preview,description,views,fileName,rating,comment,lenght,ownerNickName,sumRate</item>
+    </annotation>
+    <annotation name="addCommentAndRate">
+      <item name="propertySpecifier">id,title,duration,releaseDate,preview,description,views,fileName,rating,comment,lenght,ownerNickName,sumRate</item>
+    </annotation>
+    <annotation name="removeHistorie">
+      <item name="propertySpecifier">id,title,duration,releaseDate,preview,description,views,fileName,rating,comment,lenght,ownerNickName,sumRate</item>
+    </annotation>
+    <property name="id" type="long"/>
+    <property name="title" type="string"/>
+    <property name="duration" type="integer"/>
+    <property name="releaseDate" type="Date"/>
+    <property name="preview" type="blob"/>
+    <property name="description" type="string"/>
+    <property name="views" type="integer"/>
+    <property name="fileName" type="string"/>
+    <property name="rating" type="integer"/>
+    <property name="comment" type="Comment[]"/>
+    <property name="lenght" type="integer"/>
+    <property name="ownerNickName" type="string"/>
+    <property name="sumRate" type="long"/>
+  </entity>
+</model>

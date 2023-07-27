@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 width="100%" height="100%" currentState="Login">
+	<fx:Script>
+		<![CDATA[
+			import de.liersch.preference.Colors;
+			
+			import mx.controls.Alert;
+		]]>
+	</fx:Script>
+	
+
+	
+<!--	<fx:Declarations>
+		<mx:EmailValidator source="{textinputRegisterEmail}" property="text" 
+						   trigger="{textinputRegisterEmail}" triggerEvent="focusOut"
+						   invalid="Alert.show('Du hast dich bei deiner Emailadresse vertan!');"
+						   valid="Alert.show('Validation Succeeded!');"/>
+		<mx:EmailValidator source="{textinputLoginName}" property="text" 
+						   trigger="{textinputLoginName}" triggerEvent="focusOut"
+						   invalid="Alert.show('Du hast dich bei deiner Emailadresse vertan!');"
+						   valid="Alert.show('Validation Succeeded!');"/>
+	</fx:Declarations>-->
+	
+	<s:states>
+		<s:State name="Login"/>
+		<s:State name="Register"/>
+		<s:State name="LoginFailed"/>
+		<s:State name="RegisterFailed"/>
+		<s:State name="WrongPassword"/>
+	</s:states>
+	
+	<s:Rect height="100%" width="100%">
+		<s:fill>
+			<s:SolidColor color="#000000" alpha="0.5"/>
+		</s:fill>
+	</s:Rect>
+	
+	<s:Group width.Login="414" height.Login="194" horizontalCenter.Login="0" verticalCenter.Login="0"
+			 width.LoginFailed="414" height.LoginFailed="194" horizontalCenter.LoginFailed="0"
+			 verticalCenter.LoginFailed="0"
+			 width.Register="500" height.Register="356" horizontalCenter.Register="0"
+			 verticalCenter.Register="0"
+			 width.RegisterFailed="500" height.RegisterFailed="356"
+			 horizontalCenter.RegisterFailed="0" verticalCenter.RegisterFailed="0"
+			 width.WrongPassword="414" height.WrongPassword="194" horizontalCenter.WrongPassword="0"
+			 verticalCenter.WrongPassword="0">
+		<s:Rect height="100%" width="100%">
+			<s:fill>
+				<s:SolidColor color="#000000"/>
+			</s:fill>
+		</s:Rect>
+		
+		<s:Group includeIn="Login,LoginFailed,WrongPassword" left="0" right="0" top="0" bottom="0" itemCreationPolicy="immediate">
+			<s:Button id="buttonLoginOk" bottom="20" label="Ok" horizontalCenter="40" buttonMode="true"/>
+			<s:Button id="buttonLoginCancel" bottom="20" label="Abbrechen" horizontalCenter="-40" buttonMode="true"/>
+			<s:Label x="123" y="65" color="#FFFFFF" text="E-Mail"
+					 x.Login="148" y.Login="65"
+					 x.LoginFailed="148"
+					 x.WrongPassword="148"/>
+			<s:Label x="132" y="99" color="#FFFFFF" text="Passwort"/>
+			<s:TextInput id="textinputLoginEmail" y="60" right="30" width="180" />
+			<s:TextInput id="textinputLoginPassword" y="95" right="30" width="180" displayAsPassword="true"/>
+			<s:Button id="buttonLoginRegister" right="10" top="10" label="Register" buttonMode="true" />
+			<s:Label includeIn="LoginFailed,WrongPassword" y="30" color="#FF0000" fontSize="16"
+					 fontWeight="bold" horizontalCenter="0" text="Login nicht erfolgreich"
+					 text.WrongPassword="Flasches Passwort "/>
+		</s:Group>
+		
+		<s:Group includeIn="Register,RegisterFailed" left="0" right="0" top="0" bottom="0" itemCreationPolicy="immediate">
+			<s:Button id="buttonRegisterOk" y="308" label="Ok"
+					  horizontalCenter.Register="50"
+					  horizontalCenter.RegisterFailed="50" buttonMode="true"/>
+			<s:Button id="buttonRegisterCancel" y="308" label="Abbrechen"
+					  horizontalCenter.Register="-50"
+					  horizontalCenter.RegisterFailed="-50" buttonMode="true"/>
+			<s:Label y="78" right="223" color="#FFFFFF" text="Name"/>
+			<s:Label y="216" right="223" color="#FFFFFF" text="Passwort"/>
+			<s:Label y="250" right="223" color="#FFFFFF" text="wiederhole Passwort"/>
+			<s:TextInput id="textinputRegisterName" y="70" right="30" width="180"/>
+			<s:Label y="111" right="223" color="#FFFFFF" text="Vorname"/>
+			<s:Label y="147" right="223" color="#FFFFFF" text="Nick Name"/>
+			<s:TextInput id="textinputRegisterGivenName" y="105" right="30" width="180"/>
+			<s:TextInput id="textinputRegisterNickName" y="140" right="30" width="180"/>
+			<s:Label y="181" right="223" color="#FFFFFF" text="Email Adresse"/>
+			<s:TextInput id="textinputRegisterEmail" y="175" right="30" width="180"/>
+			<s:TextInput id="textinputRegisterPassword" displayAsPassword="true" y="210" right="30" width="180"/>
+			<s:TextInput id="textinputRegisterPasswordRepeat" displayAsPassword="true" y="245" right="30" width="180"/>
+			<s:Button id="buttonRegisterLogin" right="30" top="10" label="Login"/>
+			<s:Rect  y="69" left="9" width="136" height="160">
+				<s:fill>
+					<s:SolidColor color="#CCCCCC"/>
+				</s:fill>
+			</s:Rect>
+			<s:Image id="avatar" y="70" left="10" width="134" height="158" />
+			<s:Label includeIn="RegisterFailed" y="42" color="#FF0000" fontSize="16"
+					 fontWeight="bold" horizontalCenter="0" text="Registrierung nicht erfolgreich"/>
+			<s:Button id="buttonImg" x="40" y="241"
+					  label.Register="Bild"
+					  label.RegisterFailed="Bild"/>
+			
+		</s:Group>
+		
+		<s:Rect left="0" right="0" top="0" bottom="0">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" joints="miter" miterLimit="4" weight="1" color="{Colors.DARKGREY}" />
+			</s:stroke>
+		</s:Rect>
+	</s:Group>
+	
+	
+</s:Group>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:s="library://ns.adobe.com/flex/spark"
+				xmlns:fx="http://ns.adobe.com/mxml/2009"
+				xmlns:d="http://ns.adobe.com/fxg/2008/dt"
+				xmlns:graphics="assets.graphics.*"
+				width="442" height="45" autoDrawBackground="false" >
+
+	<s:RichText x="46" y="1" color="#FFFFFF" fontFamily="Arial" fontSize="9" tabStops="S0 S50 S100"
+				text="{data.userName}" whiteSpaceCollapse="preserve">
+	</s:RichText>
+	<s:RichText x="46" y="17" width="396" height="20" color="#FFFFFF" fontFamily="Arial" fontSize="8"
+				text="{data.message}"/>
+
+	<s:Image id="avatar" source="{data.avatarBitmapData}" x="0" y="0" width="44" height="44"/>
+</s:ItemRenderer>

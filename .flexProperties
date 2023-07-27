@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexProperties enableServiceManager="false" flexServerFeatures="4" flexServerType="2" fmlDataModelLocation=".model/VideoClientDesktop.fml" serverContextRoot="/javaBackend" serverRoot="D:/Workspace/Java/Player/TomCat/webapps/javaBackend" serverRootURL="http://localhost:8080/javaBackend" toolCompile="true" useServerFlexSDK="false" version="2"/>

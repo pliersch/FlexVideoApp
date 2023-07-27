@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009"
+					   xmlns:s="library://ns.adobe.com/flex/spark"
+					   xmlns:mx="library://ns.adobe.com/flex/mx"
+					   xmlns:view="de.liersch.view.*"
+					   xmlns:upload="de.liersch.components.upload.*"
+					   xmlns:player="de.liersch.components.player.*"
+					   xmlns:comment="de.liersch.components.comment.*"
+					   xmlns:library="de.liersch.components.library.*"
+					   xmlns:application="de.liersch.application.*"
+					   xmlns:logger="de.liersch.components.logger.*"
+					   xmlns:login="de.liersch.components.user.login.*"
+					   xmlns:myData="de.liersch.components.user.myData.*"
+					   width="1024" height="600" minWidth="1024" minHeight="600"
+					   backgroundColor="#000000" creationComplete="creationCompleteHandler(event)"
+					   currentState="HomeState" initialize="initializeHandler(event)"
+					   showStatusBar="false">
+
+
+	<fx:Style source="css/style.css"/>
+
+	<s:states>
+		<s:State name="HomeState"/>
+		<s:State name="FullScreenState"/>
+		<s:State name="MyChannelState"/>
+	</s:states>
+
+	<fx:Script>
+		<![CDATA[
+			import de.liersch.application.ApplicationNegotiator;
+			import de.liersch.application.ApplicationPresenter;
+			import de.liersch.components.comment.CommentModel;
+			import de.liersch.components.comment.CommentPresenter;
+			import de.liersch.components.library.LibraryModel;
+			import de.liersch.components.library.LibraryPersenter;
+			import de.liersch.components.logger.Logger;
+			import de.liersch.components.player.PlayerPresenter;
+			import de.liersch.components.player.controlbar.ControlbarMediator;
+			import de.liersch.components.player.media.PlayerModel;
+			import de.liersch.components.upload.UploadModel;
+			import de.liersch.components.upload.UploadPresenter;
+			import de.liersch.components.user.UserModel;
+			import de.liersch.components.user.UserPresenter;
+			import de.liersch.components.user.login.LoginViewMediator;
+			import de.liersch.components.user.myData.MyDataViewMediator;
+
+			import mx.controls.Alert;
+			import mx.events.FlexEvent;
+			import mx.rpc.Responder;
+
+			import services.VideoService;
+
+			private var _applicationNegotiator:ApplicationNegotiator;
+			private var _service:VideoService;
+
+			private function initializeHandler(event:FlexEvent):void {
+				_service = new VideoService();
+				_service.ping(new mx.rpc.Responder(onPingSuccess, onPingFault));
+				_applicationNegotiator = new ApplicationNegotiator();
+				var applicationPresenter:ApplicationPresenter = 
+					new ApplicationPresenter(this, applicationHeadView, resizer);
+				_applicationNegotiator.windowPresenter = applicationPresenter;
+				applicationPresenter.applicationNegotiator = _applicationNegotiator;
+			}
+
+			private function onPingSuccess(o:Object):void {
+				// do nothing	
+			}
+
+			private function onPingFault(o:Object):void {
+				Alert.show("Sorry, aber versuch es bitte nachher noch mal",
+					"Keine Verbindung", 4, null, onClickAlert);
+			}
+
+			private function onClickAlert(event:Event):void {
+				close();
+			}
+
+			//////////////////////////////////////////////////////////////////////////
+			//                                                                      //
+			//                        initialize Components                         //
+			//                                                                      //
+			//////////////////////////////////////////////////////////////////////////
+
+			private function creationCompleteHandler(event:FlexEvent):void
+			{
+				initializePlayerComponent();
+				initializeLibraryComponent();
+				initializeUserComponent();
+				initializeUploadComponent()
+				initializeCommentComponent();
+				Logger.instance.setView(loggerView);
+			}
+
+			private function initializePlayerComponent():void {
+				var mediaModel:PlayerModel = new PlayerModel(playerView);
+				var controlbarController:ControlbarMediator = new ControlbarMediator(playerView.controlBar);
+				_applicationNegotiator.createPlayer(new PlayerPresenter(controlbarController,
+					mediaModel));
+			}
+
+			private function initializeLibraryComponent():void {
+				_applicationNegotiator.createLibrary(new LibraryPersenter(new LibraryModel(_service),
+					catalogView));
+			}
+
+			// es ist zu überlegen, diese Komponente erst beim Login zu instanziiern 
+			private function initializeUserComponent():void {
+				var userModel:UserModel = new UserModel(_service);
+				var loginMediator:LoginViewMediator = new LoginViewMediator(loginView);
+				var myDataMediator:MyDataViewMediator = new MyDataViewMediator(myDataView);
+				var userPresenter:UserPresenter = new UserPresenter(userModel, loginMediator, myDataMediator);
+				_applicationNegotiator.createUser(userPresenter);
+			}
+
+			// es ist zu überlegen, diese Komponente erst beim Login zu instanziiern 
+			private function initializeUploadComponent():void {
+				_applicationNegotiator.createUpload(new UploadPresenter(new UploadModel(_service),uploadView));
+			}
+
+			// es ist zu überlegen, diese Komponente erst beim Login zu instanziiern 
+			private function initializeCommentComponent():void {
+				_applicationNegotiator.createComment(new CommentPresenter(new CommentModel(_service),
+					comment));
+			}
+		]]>
+	</fx:Script>
+
+
+	<s:Rect left="0" right="0" top="0" bottom="0">
+		<s:stroke>
+			<s:SolidColorStroke caps="none" joints="miter" miterLimit="4" weight="1" color="#000000"/>
+		</s:stroke>
+	</s:Rect>
+
+	<library:LibraryView id="catalogView" includeIn="HomeState, MyChannelState" 
+						 right="10" top="60" bottom="28" />
+	<comment:CommentView id="comment" includeIn="HomeState" 
+						 left="10" right="498" bottom="28" height="200" />
+	<myData:MyDataView id="myDataView" itemCreationPolicy="immediate" 
+					   includeIn="MyChannelState" 
+					   left="10" right="498" bottom="28" height="200" />
+	<player:PlayerView id="playerView" left="10" right="500" top="60" bottom="250"  
+					   left.FullScreenState="0" right.FullScreenState="0" 
+					   top.FullScreenState="0" bottom.FullScreenState="0"/>
+	<upload:UploadView id="uploadView" visible="false" x="0" y="0" />
+	<login:LoginView id="loginView" x="0" y="30" visible="false" />
+	<application:ApplicationHeadView id="applicationHeadView"/>
+	<logger:LoggerView id="loggerView" right="10" top="50" visible="false"/>
+	<s:Image id="resizer" source="@Embed(source='assets/images/ui/resize_grip.png')" 
+			 bottom="5" right="5" buttonMode="true"/>
+
+</s:WindowedApplication>

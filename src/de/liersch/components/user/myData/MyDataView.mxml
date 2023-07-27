@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 xmlns:playListInfo="playListInfo.*"
+		 width="538" height="314" xmlns:view="de.liersch.view.*">
+	<s:states>
+		<s:State name="ViewState"/>
+		<s:State name="EditState"/>
+	</s:states>
+
+	<s:Rect width="100%" height="100%" >
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	<s:Rect left="0" right="0" top="0" bottom="0">
+		<s:stroke>
+			<s:SolidColorStroke caps="none" joints="miter" miterLimit="4" weight="1" color="#333333" />
+		</s:stroke>
+	</s:Rect>
+	
+	<s:Image id="avatar" x="10" y="10" width="134" height="158"/>
+	<s:Label id="lblName" y="20" right="276" text="Name : "
+			 color.EditState="#FFFFFF"
+			 color.ViewState="#FFFFFF"/>
+	<s:Label id="lblGivenName" y="50" right="275" text="Vorname : "
+			 color.EditState="#FFFFFF"
+			 color.ViewState="#FFFFFF"/>
+	<s:Label id="lblNickName" y="80" right="275" text="Nickname : "
+			 color.EditState="#FFFFFF"
+			 color.ViewState="#FFFFFF"/>
+	<s:Label id="lblEmail" y="110" right="276" text="Email : "
+			 color.EditState="#FFFFFF"
+			 color.ViewState="#FFFFFF"/>
+	<s:Button id="btnChange" right="10" bottom="10" label="Ändern" 
+			  includeIn="ViewState" itemCreationPolicy="immediate"/>
+	<s:Button id="btnOk" right="10" bottom="10" label="OK" 
+			  includeIn="EditState" itemCreationPolicy="immediate"/>
+	<s:Button id="btnCancel" right="90" bottom="10" label="Abbrechen" 
+			  includeIn="EditState" itemCreationPolicy="immediate"/>
+	<s:Button id="btnChangeImage" includeIn="EditState" x="43" y="174" 
+			  itemCreationPolicy="immediate" label="Bild ändern"/>
+	<s:TextInput id="txtName" y="14" right="10" width="257" 
+				 editable.ViewState="false" 
+				 editable.EditState="true"/>
+	<s:TextInput id="txtGivenName" y="44" right="10" width="257" 
+				 editable.ViewState="false"
+				 editable.EditState="true"/>
+	<s:TextInput id="txtNickName" y="74" right="10" width="257" 
+				 editable.ViewState="false"
+				 editable.EditState="true"/>
+	<s:TextInput id="txtEmail" y="104" right="10" width="257" 
+				 editable.ViewState="false"
+				 editable.EditState="true"/>
+	<s:Label id="lblEmail0" includeIn="EditState" y="140" right="276" color="#FFFFFF" text="Passwort : "/>
+	<s:TextInput id="txtPW" includeIn="EditState" itemCreationPolicy="immediate" y="134" right="10" width="257" editable="false"/>
+</s:Group>
